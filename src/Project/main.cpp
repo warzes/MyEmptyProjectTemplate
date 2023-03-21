@@ -13,6 +13,7 @@
 #include <cmath>
 #include <string>
 #include <vector>
+#include "WindowsInclude.h"
 #if defined(_MSC_VER)
 #	pragma warning(pop)
 #endif
@@ -34,6 +35,10 @@
 #else
 #	define TODO( _msg )
 #endif
+//-----------------------------------------------------------------------------
+#define SE_CHECK_AND_RETURN(exp, msg)        { if(!(exp)) { Fatal(msg); return; } }
+#define SE_CHECK_AND_RETURN_NULL(exp, msg)   { if(!(exp)) { Fatal(msg); return nullptr; } }
+#define SE_CHECK_AND_RETURN_VAL(exp, msg, r) { if(!(exp)) { Fatal(msg); return r; } }
 //-----------------------------------------------------------------------------
 template<class T>
 inline constexpr void Swap(T& left, T& right) noexcept
